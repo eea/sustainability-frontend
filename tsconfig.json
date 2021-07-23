@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "paths": {
+            "volto-base": [
+                "develop/volto-base/src"
+            ],
+            "volto-addons": [
+                "develop/volto-addons/src"
+            ],
+            "volto-embed": [
+                "develop/volto-embed/src"
+            ],
+            "volto-datablocks": [
+                "develop/volto-datablocks/src"
+            ],
+            "volto-plotlycharts": [
+                "develop/volto-plotlycharts/src"
+            ]
+        },
+        "baseUrl": "src"
+    }
+}
