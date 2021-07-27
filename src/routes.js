@@ -5,7 +5,7 @@
 
 import { App } from '@plone/volto/components';
 import { defaultRoutes } from '@plone/volto/routes';
-import { addonRoutes } from '~/config';
+import config from '@plone/volto/registry';
 
 /**
  * Routes array.
@@ -18,8 +18,7 @@ const routes = [
     component: App, // Change this if you want a different component
     routes: [
       // Add your routes here
-      // addon routes have a higher priority then default routes
-      ...(addonRoutes || []),
+      ...(config.addonRoutes || []),
       ...defaultRoutes,
     ],
   },

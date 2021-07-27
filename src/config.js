@@ -1,44 +1,22 @@
-import * as voltoConfig from '@plone/volto/config';
+/**
+ * Add your config changes here.
+ * @module config
+ * @example
+ * export default function applyConfig(config) {
+ *   config.settings = {
+ *     ...config.settings,
+ *     port: 4300,
+ *     listBlockTypes: {
+ *       ...config.settings.listBlockTypes,
+ *       'my-list-item',
+ *    }
+ * }
+ */
 
-import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
-import { applyConfig as plotlyConfig } from 'volto-plotlycharts/config';
-import { applyConfig as installEmbed } from 'volto-embed/config';
+// All your imports required for the config here BEFORE this line
+import '@plone/volto/config';
 
-const config = [
-  plotlyConfig,
-  installEmbed,
-  dataBlocksConfig
-].reduce((acc, apply) => apply(acc), voltoConfig);
-
-export const settings = {
-  ...config.settings
-};
-
-export const views = {
-  ...config.views,
-};
-
-export const widgets = {
-  ...config.widgets,
-};
-
-export const blocks = {
-  ...config.blocks,
-};
-
-// TODO: should we move custom stuff to settings variable?
-// It would make future adding new settings types easier, as this file wouldn't
-// have to be updated in all frontend implementations
-// console.log('config.js AddonReducers', config.addonReducers);
-export const addonReducers = { ...config.addonReducers };
-export const addonRoutes = [...(config.addonRoutes || [])];
-
-export const viewlets = [...(config.viewlets || [])];
-
-export const portlets = {
-  ...config.portlets,
-};
-
-export const editForms = {
-  ...config.editForms,
-};
+export default function applyConfig(config) {
+  // Add here your project's configuration here by modifying `config` accordingly
+  return config;
+}
