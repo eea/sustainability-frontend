@@ -62,6 +62,12 @@ typings/
 # next.js build output
 .next
 
+npm-debug.log*
+.DS_Store
+
+# locales
+locales/*.json
+
 build
 .env.local
 .env.development.local
