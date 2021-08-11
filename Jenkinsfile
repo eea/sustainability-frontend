@@ -83,6 +83,21 @@ pipeline {
         }
       }
     }
+    
+    stage('Upgrade demo') {
+      when {
+        buildingTag()
+      }
+      steps {
+        node(label: 'docker') {
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Rancher_dev_token', usernameVariable: 'RANCHER_ACCESS', passwordVariable: 'RANCHER_SECRET'],string(credentialsId: 'Rancher_dev_url', variable: 'RANCHER_URL')]) {
+            sh '''wget -O rancher_upgrade.sh https://raw.githubusercontent.com/eea/eea.docker.gitflow/master/src/rancher_upgrade.sh'''
+            sh '''chmod 755 rancher_upgrade.sh'''
+            sh '''./rancher_upgrade.sh'''
+         }
+        }
+      }
+    }
 
   }
 
