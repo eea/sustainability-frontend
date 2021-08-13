@@ -1,5 +1,7 @@
 pipeline {
   environment {
+    RANCHER_STACKID = "1st2298"
+    RANCHER_ENVID = "1a332957"
     GIT_NAME = "sustainability-frontend"
     registry = "eeacms/sustainability-frontend"
     template = "templates/volto-sustainability"
