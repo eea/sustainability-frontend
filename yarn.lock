@@ -1513,10 +1513,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-toc/-/volto-block-toc-2.2.2.tgz#ee05222aefada34c71a6c44d4efc9baf4f4570c1"
   integrity sha512-10XSDyDXXKWZd6+QaZLZ1KLnLCAVpu25IJScPkFaw/DqtUS1ZbmJrvZ6Dc+c4ya632ybyhu75lFlALSgD2X0zQ==
 
-"@eeacms/volto-columns-block@4.4.4":
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.4.4.tgz#136cbb1c490c13b697469c4e9087360dff2ac55b"
-  integrity sha512-JbSjcwWDFHrjuJVaIdkt7/1AaOw1Ex7OiNWFCsINg5DwD+LcJWq8fiKTy6tppGuUgI8W80xyx/YGwITkYlrjYA==
+"@eeacms/volto-columns-block@4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.4.5.tgz#f32b3e8b8b76d765e2ccec2cac9d141d74e61870"
+  integrity sha512-62PBqpUiO2Wxvz8Q4xlcJRtbq2tfesCL2NLywvIDpStqa1Zau7Y6X1t+T6qimo12P6/yrne0hUbkLVwcsloFfw==
   dependencies:
     react-color "~2.18.1"
 
@@ -1574,10 +1574,17 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-sentry-rancher-config/-/volto-sentry-rancher-config-2.1.2.tgz#3833b597568a824e916c09d1927e651a0fba2fda"
   integrity sha512-eT+SlMCXFK4H1N8yqJOWq5cNDF73gvVUGS/cw3qbZmYhhkqCIDrU43aa1/6aGHzmeTStIIS7KtwEVlbDeHYAMQ==
 
-"@eeacms/volto-slate-footnote@*", "@eeacms/volto-slate-footnote@2.3.1":
+"@eeacms/volto-slate-footnote@*":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-slate-footnote/-/volto-slate-footnote-2.3.1.tgz#dde4f53e5f2ac07beaabfa1c01383183625efa2d"
   integrity sha512-GqKYizXuAezT4BZKSmu6RAjqM7HODtFqTeSiXHCrsJ5MUGfHimtKsPGua6j2+2B4nTtT6Mj/9rMcTCrvqDTDdQ==
+  dependencies:
+    volto-slate "*"
+
+"@eeacms/volto-slate-footnote@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-slate-footnote/-/volto-slate-footnote-2.4.0.tgz#38a3417b74af6185028ba491c6c417c51daf26e0"
+  integrity sha512-Ec86qeS+BYMQT/2EeGqGJpjksznWxDMlxyfJHhg2gJsLAsFJntvf6o1p+h5HBsFTlkDjUPNBDhpB2HtuMuwM3A==
   dependencies:
     volto-slate "*"
 
@@ -1596,6 +1603,13 @@
   dependencies:
     "@eeacms/volto-slate-footnote" "*"
     volto-slate "*"
+
+"@eeacms/volto-sustainability-theme@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.2.tgz#d687e4d66feae6ec27e994784997b26e7c299ba0"
+  integrity sha512-4v6haUw9KzL6lFaOXeylGYuIW05GP8ZgMHcW74cLgS8hHP2sPHREyB+t9kXjkz0TfO46/5g+JOVSPdIRGrS2AQ==
+  dependencies:
+    "@eeacms/volto-corsproxy" "*"
 
 "@eeacms/volto-widget-geolocation@3.0.1":
   version "3.0.1"
@@ -17662,10 +17676,10 @@ volto-slate@*:
     slate-react "^0.62.0"
     weak-key "^1.0.2"
 
-volto-slate@2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.9.0.tgz#6e2f0fdf15a651a6fb5cc96d60efb4a7bc53f20c"
-  integrity sha512-1xVSUoAbDcRQSc23rEh0CGAlwgUtvRXHNuCbL/ENW37Ca7Ak1FBuIl7mvR4Tdvqq/eRGZHwG0NQf8WTPiuq/pA==
+volto-slate@2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.9.1.tgz#d4ed326470570a5b81c3dbd65e2aa9acf936184e"
+  integrity sha512-ZCqMnIv+qHOsMgespqLwDKvAqSbrflGXF1MFTABbCgpEAA7dw/9SGaCR1Sa5uZbYs8kb24PR7esBCKs2JszQkg==
   dependencies:
     "@eeacms/volto-object-widget" ">=2.2.3"
     classnames "2.2.6"
