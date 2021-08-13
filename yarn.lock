@@ -1155,7 +1155,7 @@
   dependencies:
     react-color "~2.18.1"
 
-"@eeacms/volto-corsproxy@2.1.2", "@eeacms/volto-corsproxy@>=2.1.2":
+"@eeacms/volto-corsproxy@*", "@eeacms/volto-corsproxy@2.1.2", "@eeacms/volto-corsproxy@>=2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.2.tgz#eb1b50a7382e4da9601128ee972d3249a29ce939"
   integrity sha512-5j2ETMD8XRUk8hs4qqpd6F9SSlmTw0eqwNKPlouF78cdql/vJ5Pc4cgdZDh1Qldum1CcFnqdLxGABzQkfE3SDQ==
@@ -1232,10 +1232,12 @@
     "@eeacms/volto-slate-footnote" "*"
     volto-slate "*"
 
-"@eeacms/volto-sustainability-theme@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.0.tgz#d79c5e8baf0f81d81abbf8235a98310adeea7bba"
-  integrity sha512-rAl92n0Je9dHjDwJol5UqjMEwP4RMyqlOf05y0y70tGqq9f0OgUOZsSzCv/XceCC6Jl+YodZUqg9XtaI/krcrQ==
+"@eeacms/volto-sustainability-theme@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.1.tgz#1f0bdf7b60137fb4c3ff0400e9ea31ad70b2c082"
+  integrity sha512-6rCoqmqxGSD7AuPHiflJ9VSS55K/zX80zORww7PGEniO1mctzz2GKzJrnrHGoBGiFUHauZjcR+O61DuN/JJe3Q==
+  dependencies:
+    "@eeacms/volto-corsproxy" "*"
 
 "@eeacms/volto-widget-geolocation@3.0.1":
   version "3.0.1"
