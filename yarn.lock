@@ -1239,10 +1239,10 @@
     "@eeacms/volto-slate-footnote" "*"
     volto-slate "*"
 
-"@eeacms/volto-sustainability-theme@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.1.tgz#1f0bdf7b60137fb4c3ff0400e9ea31ad70b2c082"
-  integrity sha512-6rCoqmqxGSD7AuPHiflJ9VSS55K/zX80zORww7PGEniO1mctzz2GKzJrnrHGoBGiFUHauZjcR+O61DuN/JJe3Q==
+"@eeacms/volto-sustainability-theme@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.2.tgz#d687e4d66feae6ec27e994784997b26e7c299ba0"
+  integrity sha512-4v6haUw9KzL6lFaOXeylGYuIW05GP8ZgMHcW74cLgS8hHP2sPHREyB+t9kXjkz0TfO46/5g+JOVSPdIRGrS2AQ==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
 
