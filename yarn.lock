@@ -1480,6 +1480,11 @@
     "@eeacms/volto-slate-footnote" "*"
     volto-slate "*"
 
+"@eeacms/volto-sustainability-theme@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.0.tgz#d79c5e8baf0f81d81abbf8235a98310adeea7bba"
+  integrity sha512-rAl92n0Je9dHjDwJol5UqjMEwP4RMyqlOf05y0y70tGqq9f0OgUOZsSzCv/XceCC6Jl+YodZUqg9XtaI/krcrQ==
+
 "@eeacms/volto-widget-geolocation@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-widget-geolocation/-/volto-widget-geolocation-3.0.1.tgz#a86ded31db0627b925489317d31326286b0056c7"
