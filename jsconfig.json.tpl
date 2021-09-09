@@ -1,1 +1,7 @@
-
+{
+    "compilerOptions": {
+        "paths": {
+        },
+        "baseUrl": "src"
+    }
+}
