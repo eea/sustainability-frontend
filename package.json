@@ -109,7 +109,7 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-eea-kitkat": "2.0.0",
+    "@eeacms/volto-eea-kitkat": "2.0.1",
     "@eeacms/volto-ims-policy": "1.0.4",
     "@eeacms/volto-sustainability-theme": "0.1.2",
     "@eeacms/volto-workflow-progress": "2.3.6",
