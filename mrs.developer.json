@@ -20,11 +20,5 @@
     "url": "https://github.com/eea/volto-plotlycharts.git",
     "path": "src",
     "develop": false
-  },
-  "volto-sustainability-theme": {
-    "url": "https://github.com/eea/volto-sustainability-theme.git",
-    "path": "src",
-    "develop": true,
-    "branch": "develop"
   }
 }
