@@ -10,6 +10,7 @@ RUN runDeps="openssl ca-certificates patch git" \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && chown -R node /opt/frontend/ \
+ && mkdir -p /opt/frontend/src/addons \
  && rm -rf /opt/frontend/src/addons/* \
  && npm install -g mrs-developer
 
@@ -17,8 +18,6 @@ WORKDIR /opt/frontend/
 USER node
 ARG MAX_OLD_SPACE_SIZE=8192
 ENV NODE_OPTIONS=--max_old_space_size=$MAX_OLD_SPACE_SIZE
-
-mkdir -p /opt/frontend/src/addons
 
 RUN cd /opt/frontend \
  && RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn \
