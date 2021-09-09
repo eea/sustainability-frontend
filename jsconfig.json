@@ -1,10 +1,7 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@eeacms/volto-sustainability-theme": [
-        "addons/volto-sustainability-theme/src"
-      ]
-    },
-    "baseUrl": "src"
-  }
+    "compilerOptions": {
+        "paths": {
+        },
+        "baseUrl": "src"
+    }
 }
