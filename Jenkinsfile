@@ -71,9 +71,27 @@ pipeline {
       }
     }
 
-    stage('Build & Push') {
+  
+    stage('Release') {
       when {
+        allOf {
           environment name: 'CHANGE_ID', value: ''
+          branch 'master'
+        }
+      }
+      steps {
+        node(label: 'docker') {
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
+            sh '''docker pull eeacms/gitflow'''
+            sh '''docker run -i --rm --name="$BUILD_TAG-gitflow-master" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e LANGUAGE=javascript eeacms/gitflow'''
+          }
+        }
+      }
+    }
+
+    stage('Build & Push ( on tag )') {
+      when {
+        buildingTag()
       }
       steps{
         node(label: 'docker-host') {
@@ -96,27 +114,8 @@ pipeline {
         }
       }
     }
-
-   
-    stage('Release') {
-      when {
-        allOf {
-          environment name: 'CHANGE_ID', value: ''
-          branch 'master'
-        }
-      }
-      steps {
-        node(label: 'docker') {
-          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
-            sh '''docker pull eeacms/gitflow'''
-            sh '''docker run -i --rm --name="$BUILD_TAG-gitflow-master" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e LANGUAGE=javascript eeacms/gitflow'''
-          }
-        }
-      }
-    }
-
     
-    stage('Release on tag creation') {
+    stage('Release catalog ( on tag )') {
       when {
         buildingTag()
       }
@@ -129,7 +128,7 @@ pipeline {
       }
     }
     
-    stage('Upgrade demo on tag creation') {
+    stage('Upgrade demo ( on tag )') {
       when {
         buildingTag()
       }
