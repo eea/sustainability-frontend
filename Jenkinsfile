@@ -15,11 +15,10 @@ pipeline {
   stages {
     
     stage('Integration tests') {
-      steps {
-        parallel(
-
-          "Cypress": {
-            node(label: 'docker') {
+      parallel {
+        stage('Integration with Cypress') {
+            steps {
+              node(label: 'docker') {
               script {
                 try {
                   sh '''docker pull plone; docker run -d --name="$BUILD_TAG-plone" -e SITE="Plone" -e PROFILES="profile-plone.restapi:blocks" plone fg'''
@@ -43,9 +42,9 @@ pipeline {
                 }
               }
             }
-          },
+          }
           
-          "Docker test build": {
+          stage("Docker test build") {
              when {
                not {
                 environment name: 'CHANGE_ID', value: ''
@@ -58,7 +57,7 @@ pipeline {
              environment {
               IMAGE_NAME = BUILD_TAG.toLowerCase()
              }
-             steps{
+             steps {
                node(label: 'docker-host') {
                  script {
                    checkout scm
@@ -72,7 +71,7 @@ pipeline {
              }
           }
           
-        )
+        
       }
     }
 
