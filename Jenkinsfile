@@ -43,7 +43,7 @@ pipeline {
                 }
               }
             }
-          }
+          },
           
           "Docker test build": {
              when {
