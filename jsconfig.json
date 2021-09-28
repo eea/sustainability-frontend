@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@eeacms/volto-staging-banner": ["src/addons/volto-staging-banner"]
+      "@eeacms/volto-staging-banner": ["addons/volto-staging-banner/src"]
     },
     "baseUrl": "src"
   }
