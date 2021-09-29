@@ -1275,10 +1275,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-staging-banner/-/volto-staging-banner-0.1.6.tgz#d2250050e09b128fba5ca3778888135edb0bb74b"
   integrity sha512-ZMNr9mLyqbsnpXeWoKgfAcvHL9oqdQk4Lb3ktxvZFJONMjsgul4B8IJnN3tGe+adkZyWK4I5QjHFwW6+BbTlwQ==
 
-"@eeacms/volto-sustainability-theme@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.2.tgz#d687e4d66feae6ec27e994784997b26e7c299ba0"
-  integrity sha512-4v6haUw9KzL6lFaOXeylGYuIW05GP8ZgMHcW74cLgS8hHP2sPHREyB+t9kXjkz0TfO46/5g+JOVSPdIRGrS2AQ==
+"@eeacms/volto-sustainability-theme@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sustainability-theme/-/volto-sustainability-theme-0.1.3.tgz#2eac5c58f1c4bfdec71fd6d9f730f526c5a786c0"
+  integrity sha512-vKdh9JN8FagAd0VaoWOczp6ghlI/6s9ytUuR0ixh83M4UaxPn8af51au8CLQtK8VfQty4qIJp02BKJIQb3zKtQ==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
 
