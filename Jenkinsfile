@@ -7,6 +7,7 @@ pipeline {
     template = "templates/volto-sustainability"
     dockerImage = ''
     tagName = ''
+    SONARQUBE_TAG = 'sustainability.eionet.europa.eu'
   }
 
   agent any
@@ -14,10 +15,12 @@ pipeline {
   stages {
     
     stage('Integration tests') {
-      steps {
-        parallel(
-
-          "Cypress": {
+      parallel {
+        stage('Integration with Cypress') {
+          when {
+            environment name: 'CHANGE_ID', value: ''           
+          }
+          steps {
             node(label: 'docker') {
               script {
                 try {
@@ -43,8 +46,36 @@ pipeline {
               }
             }
           }
-
-        )
+        }
+        
+        stage("Docker test build") {
+             when {
+               not {
+                environment name: 'CHANGE_ID', value: ''
+               }
+               not {
+                 buildingTag()
+               }
+               environment name: 'CHANGE_TARGET', value: 'master'
+             }
+             environment {
+              IMAGE_NAME = BUILD_TAG.toLowerCase()
+             }
+             steps {
+               node(label: 'docker-host') {
+                 script {
+                   checkout scm
+                   try {
+                     dockerImage = docker.build("${IMAGE_NAME}", "--no-cache .")
+                   } finally {
+                     sh script: "docker rmi ${IMAGE_NAME}", returnStatus: true
+                   }
+                 }
+               }
+             }
+          }
+          
+        
       }
     }
 
@@ -71,9 +102,27 @@ pipeline {
       }
     }
 
-    stage('Build & Push') {
+  
+    stage('Release') {
       when {
+        allOf {
           environment name: 'CHANGE_ID', value: ''
+          branch 'master'
+        }
+      }
+      steps {
+        node(label: 'docker') {
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
+            sh '''docker pull eeacms/gitflow'''
+            sh '''docker run -i --rm --name="$BUILD_TAG-gitflow-master" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e LANGUAGE=javascript eeacms/gitflow'''
+          }
+        }
+      }
+    }
+
+    stage('Build & Push ( on tag )') {
+      when {
+        buildingTag()
       }
       steps{
         node(label: 'docker-host') {
@@ -96,27 +145,8 @@ pipeline {
         }
       }
     }
-
-   
-    stage('Release') {
-      when {
-        allOf {
-          environment name: 'CHANGE_ID', value: ''
-          branch 'master'
-        }
-      }
-      steps {
-        node(label: 'docker') {
-          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
-            sh '''docker pull eeacms/gitflow'''
-            sh '''docker run -i --rm --name="$BUILD_TAG-gitflow-master" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e LANGUAGE=javascript eeacms/gitflow'''
-          }
-        }
-      }
-    }
-
     
-    stage('Release on tag creation') {
+    stage('Release catalog ( on tag )') {
       when {
         buildingTag()
       }
@@ -129,7 +159,7 @@ pipeline {
       }
     }
     
-    stage('Upgrade demo on tag creation') {
+    stage('Upgrade demo ( on tag )') {
       when {
         buildingTag()
       }
@@ -144,7 +174,27 @@ pipeline {
       }
     }
 
+    stage('Update SonarQube Tags') {
+      when {
+        not {
+          environment name: 'SONARQUBE_TAG', value: ''
+        }
+        buildingTag()
+      }
+      steps{
+        node(label: 'docker') {
+          withSonarQubeEnv('Sonarqube') {
+            withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GIT_TOKEN')]) {
+              sh '''docker pull eeacms/gitflow'''
+              sh '''docker run -i --rm --name="${BUILD_TAG}-sonar" -e GIT_NAME=${GIT_NAME} -e GIT_TOKEN="${GIT_TOKEN}" -e SONARQUBE_TAG=${SONARQUBE_TAG} -e SONARQUBE_TOKEN=${SONAR_AUTH_TOKEN} -e SONAR_HOST_URL=${SONAR_HOST_URL}  eeacms/gitflow /update_sonarqube_tags.sh'''
+            }
+          }
+        }
+      }
+    }
   }
+
+
 
   post {
     changed {
