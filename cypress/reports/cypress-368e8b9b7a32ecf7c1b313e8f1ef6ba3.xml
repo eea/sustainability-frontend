@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="13.5490" tests="1" failures="0">
+  <testsuite name="" timestamp="2021-11-10T18:04:15" tests="0" file="cypress/integration/block-basics.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Root Suite.Blocks Tests" timestamp="2021-11-10T18:04:15" tests="1" time="13.5490" failures="0">
+    <testcase name="Add Block: Empty" time="13.5490" classname="Blocks Tests">
+    </testcase>
+  </testsuite>
+</testsuites>
