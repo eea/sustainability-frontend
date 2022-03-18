@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/github/v/release/eea/sustainability-frontend?sort=semver)](https://github.com/eea/sustainability-frontend/releases)
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fsustainability-frontend%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto/job/sustainability-frontend/job/master/lastBuild/display/redirect)
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fsustainability-frontend%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto/job/sustainability-frontend/job/develop/lastBuild/display/redirect)
-[![Release pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fsustainability-frontend%2F1.7.0&build=last&subject=release%20v1.7.0%20pipeline)](https://ci.eionet.europa.eu/view/Github/job/volto/job/sustainability-frontend/job/1.7.0/lastBuild/display/redirect/)
+[![Release pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fsustainability-frontend%2F1.8.0&build=last&subject=release%20v1.8.0%20pipeline)](https://ci.eionet.europa.eu/view/Github/job/volto/job/sustainability-frontend/job/1.8.0/lastBuild/display/redirect/)
 
 
 ## Documentation
