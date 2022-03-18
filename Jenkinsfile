@@ -2,21 +2,22 @@ pipeline {
   environment {
     RANCHER_STACKID = "1st2298"
     RANCHER_ENVID = "1a332957"
+    dockerImage = ''
+    tagName = ''
     GIT_NAME = "sustainability-frontend"
     registry = "eeacms/sustainability-frontend"
     template = "templates/volto-sustainability"
-    dockerImage = ''
-    tagName = ''
     SONARQUBE_TAG = 'sustainability.eionet.europa.eu'
   }
 
   agent any
 
   stages {
-    
-    stage('Integration tests') {
+
+ 
+   stage('Integration tests') {
       parallel {
-        stage('Integration with Cypress') {
+        stage('Cypress') {
           when {
             environment name: 'CHANGE_ID', value: ''           
           }
@@ -25,7 +26,7 @@ pipeline {
               script {
                 try {
                   sh '''docker pull plone; docker run -d --name="$BUILD_TAG-plone" -e SITE="Plone" -e PROFILES="profile-plone.restapi:blocks" plone fg'''
-                  sh '''docker pull eeacms/volto-project-ci; docker run -i --name="$BUILD_TAG-cypress" --link $BUILD_TAG-plone:plone -e GIT_NAME=$GIT_NAME -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/volto-project-ci cypress'''
+                  sh '''docker pull eeacms/volto-project-ci; docker run -i --name="$BUILD_TAG-cypress" --link $BUILD_TAG-plone:plone -e RAZZLE_FRONTEND_VERSION=$registry -e RAZZLE_FRONTEND_PUBLISHED_AT=\$(date +%F'T'%T'Z') -e GIT_NAME=$GIT_NAME -e TIMEOUT=480000 -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/volto-project-ci cypress'''
                 } finally {
                   try {
                     sh '''rm -rf cypress-reports cypress-results'''
@@ -139,7 +140,7 @@ pipeline {
                 dockerImage.push()
               }
             } finally {
-              sh "docker rmi $registry:$tagName"
+              sh script: "docker rmi $registry:$tagName", returnStatus: true
             }
           }
         }
@@ -152,9 +153,9 @@ pipeline {
       }
       steps{
         node(label: 'docker') {
-          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
-           sh '''docker pull eeacms/gitflow; docker run -i --rm --name="${BUILD_TAG}-release" -e GIT_TOKEN="${GITHUB_TOKEN}" -e RANCHER_CATALOG_PATH="${template}" -e DOCKER_IMAGEVERSION="${BRANCH_NAME}" -e DOCKER_IMAGENAME="${registry}" --entrypoint /add_rancher_catalog_entry.sh eeacms/gitflow'''
-         }
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'),  usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+           sh '''docker pull eeacms/gitflow; docker run -i --rm --name="$BUILD_TAG-release"  -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e DOCKERHUB_REPO="$registry" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS"  -e RANCHER_CATALOG_PATHS="$template" -e GITFLOW_BEHAVIOR="RUN_ON_TAG" eeacms/gitflow'''
+          }
         }
       }
     }
@@ -193,8 +194,6 @@ pipeline {
       }
     }
   }
-
-
 
   post {
     changed {

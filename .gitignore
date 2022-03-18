@@ -80,3 +80,7 @@ data
 src/addons
 src/develop
 npm-cache
+
+cypress/reports
+cypress/videos
+cypress/screenshots
