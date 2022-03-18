@@ -33,7 +33,9 @@ pipeline {
                     sh '''mkdir -p cypress-reports cypress-results'''
                     sh '''docker cp $BUILD_TAG-cypress:/opt/frontend/my-volto-project/cypress/videos cypress-reports/'''
                     sh '''docker cp $BUILD_TAG-cypress:/opt/frontend/my-volto-project/cypress/reports cypress-results/'''
+                    sh '''ls -ltr cypress-results/*'''
                     archiveArtifacts artifacts: 'cypress-reports/videos/*.mp4', fingerprint: true
+                    archiveArtifacts artifacts: 'cypress-results/**/*.xml', fingerprint: true
                   }
                   finally {
                     catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
