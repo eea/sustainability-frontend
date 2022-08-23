@@ -114,7 +114,7 @@
   },
   "dependencies": {
     "@eeacms/volto-eea-kitkat": "6.2.3",
-    "@eeacms/volto-sustainability-theme": "0.1.10",
+    "@eeacms/volto-sustainability-theme": "0.1.11",
     "@plone/volto": "13.8.2"
   },
   "devDependencies": {
