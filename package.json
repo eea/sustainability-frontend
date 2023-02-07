@@ -113,7 +113,7 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-eea-kitkat": "10.6.1",
+    "@eeacms/volto-eea-kitkat": "11.0.0",
     "@eeacms/volto-sustainability-theme": "0.1.14",
     "@plone/volto": "13.8.2"
   },
